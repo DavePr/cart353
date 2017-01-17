@@ -1,0 +1,57 @@
+David Proulx
+40007114
+Cart 353
+Concepts: 50 Ideas
+
+
+1. A management game about making big decisions as ruler of a country and the implications of those decisions.
+2. An RPG that comments on capitalism, with the main character being a merchant.
+3. A fantasy open world rogue like which is almost completely procedurally generated.
+4. A text based adventure which instead uses sound to create the game’s imagery.
+5. A strategy game based off chess that gets progressively more complex.
+6. A game in which players play god and program living creatures to populate a virtual world.
+7. A cooperative game that is inspired by and comically pastiches Dungeons and Dragons
+8. A tower defense game in which the player types out words that create the towers.
+9. A humor based narrative game in which the player manages the social dynamic of a fantasy adventuring party.
+10. A series of minigames put together to test the players ability to multitask.
+11. An adventure survival game that evokes the feeling of loneliness and isolation.
+12. A simulation and management game of a sci-fi spaceship.
+13. A speed puzzle game in which the player needs to program a chain of command to dictate a robot’s movement
+14. An RPG game as a person being brought back to life as zombie.
+15. An RPG that places the player as a mad scientist, inspired by Mary Shelley’s Dr.Frankenstein.
+16. A concentration game that attempts to create a disorienting affect on the player.
+17. A sidescroller in which the player manages various sized characters to complete puzzles.
+18. A horror game which comments on the virtual invasion of people’s privacy and their information.
+19. A rhythm-based fighting game in which characters must follow the music. 
+20. A procedurally generated detective game in which player uncovers and investigates a murder.
+21. A comedic horse race game with “irregular mounts” based on gambling and absurd humor.
+22. A music creation tool that represents the created song through a cartoon marching band.
+23. A circus management simulator
+24. An application to help table top roleplayers manage a character sheet and virtually roll dice.
+25. A puzzle game that mocks old school puzzle rpg’s with absurd solutions and high difficulty.
+26. A puzzle management game in which the player controls a human brain like a computer.
+27. A narrative roleplaying game in which the main character struggles through multiple personality disorder.
+28. A top down strategy game with multi-character management and permanent death. Each character has unique abilities and the goal is to get as far as possible with the least deaths.
+29. A strategy game about creating and managing a religion and gathering the faithful
+30. A tower defense game with a theme of a children’s snowball fight. (Guerre des Tuques).
+31. A zombie survival game with a theme of pollution and global warming.
+32. A stealth based, top down adventure game in which the player takes on the role of Santa Claus.
+33. A strategy sandbox game in which the player attempts to create the most prosperous environment for humans to live on. 
+34. A platformer set in a construction zone in which the player can use cranes and other machines to manipulate the platforms.
+35. A more advanced and difficult version of the toy Simon says.
+36. A fantasy RPG in which the player explores the life of a dragon
+37. A rhythm based endless running game with sheep jumping over fences
+38. A card based game in which players use parts to create monsters.
+39. A fantasy sports manager in which the team players are medieval fantasy creatures. 
+40. A simulation in which players ride a UFO as an alien around Earth.
+41. An application in which the user manages and is rewarded for completing their regular day tasks and responsibilities
+42. A simulation game about the social dynamics and struggles of high schoolers.
+43. A platform in which the player’s abilities and mechanics can be drastically changed and customized at the beginning of the game
+44. A political strategy game about big oil companies
+45. A physics based platformer about trust in which players take leaps of faith.
+46. A JRPG comically commenting about the conventions of JRPGs
+47. A simulation game where you mix and match cards to design game ideas.
+48. A monopoly-esque strategy game about food corporations such as McDonalds.
+49. A “bullet hell” game about gun legislation and violence
+50. A survival RPG about being stranded on a desert island.
+
