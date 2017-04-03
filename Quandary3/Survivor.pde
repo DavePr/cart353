@@ -29,7 +29,9 @@ class Survivor {
   int rollGend;
   String gender;
 
-
+  //NAME
+  String name; 
+  
   //CONSTRUCTOR
 
   Survivor(int newX, int newY) {
@@ -174,7 +176,7 @@ class Survivor {
     //RIGHT SHOE
     rect(x+20, y+80, 25, 8);
   }
-  
+
   //DISPLAY METHOD FOR PROFILE PAGE
   void individual() {
     noStroke();
@@ -274,9 +276,6 @@ class Survivor {
 
     //RIGHT SHOE
     rect(100+20, y+80, 25, 8);
-    
-    
-    
   }
   //COLOR CHANGE METHOD
   //If the survivor's wellbeing value goes below 100, his color palette changes to a uniform, monochromatic gray
@@ -287,7 +286,7 @@ class Survivor {
       pantsColor = color(125, 125, 125);
     }
   }
-  
- 
+
+
   //END OF CLASS
 }

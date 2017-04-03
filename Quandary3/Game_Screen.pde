@@ -31,10 +31,10 @@ class Game_Screen {
     menuNo = 0;
     lightGrey = 155;
     darkGrey = 100;
-    center = ((width + height)/2) /2 ;
+    center =  ( (width/2) + (height/2) ) /2 ;
     w = width;
     h = height;
-    start = new Button(center, center +300, 100, 50, 255, 0);
+    start = new Button(center + 100, center, 100, 50, 255, 0);
     pistol = new Gun(100, 600);
     sys = new SurvivorSystem();
     sys.spawn();
@@ -50,7 +50,7 @@ class Game_Screen {
     } else if (menuNo == 2) {
       group();
     } else if (menuNo == 3) {
-      profile(1);
+      profile();
     }
   }
 
@@ -59,10 +59,10 @@ class Game_Screen {
     textAlign(CENTER);
     textSize(72);
     fill(255);
-    text("Quandary", center, center -100);
+    text("Quandary", center + 100, center - 300);
     textSize(36);
     start.highlight();
-    text("Start", center, center + 300);
+    text("Start", center + 100, center);
     if (mousePressed && start.mouseOver) {
       menuNo = 1;
     }
@@ -73,8 +73,8 @@ class Game_Screen {
     textAlign(CENTER);
     textSize(36);
     fill(255);
-    text("Here's where the intro goes", center, center-100);
-    text("Press Any Key to Begin", center, center + 300);
+    text("Here's where the intro goes", center +100, center-300);
+    text("Press Any Key to Begin", center +100, center);
     if (keyPressed) {
       menuNo = 2;
     }
@@ -96,20 +96,20 @@ class Game_Screen {
     }
   }
 
-  void profile(int survNo) {
+  void profile() {
     background(lightGrey);
     rectMode(CORNER);
     fill(100);
-    rect(0, center+75, w, h);
+    rect(0, center-30, w, h);
     rect(50, 100, 300, 300);
-    sys.idisp(survNo); 
+    sys.idisp(); 
     textSize(36);
     //text(survNames[screenNumber], 50, 75);
     //text("Health: " + Group[screenNumber].health, 375, 130);
     //text("Sanity: "  + Group[screenNumber].sanity, 375, 230);
     //text("Trust: "  + Group[screenNumber].trust, 375, 330);
     fill(200);
-    text("View Relationships", 200, 500);
+    text("View Relationships", 400, 500);
   }
 
   /* Outline for Game Screens
