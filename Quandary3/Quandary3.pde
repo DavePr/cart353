@@ -9,4 +9,5 @@ void setup() {
 }
 void draw() {
   Game.run();
+  println(Game.lock);
 }

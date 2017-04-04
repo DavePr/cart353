@@ -52,14 +52,14 @@ class Button {
   //BUTTON HIGHLIGHT METHODS
 
   void highlight() {
-    if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-w/2 && mouseY < y+w/2) {
+    if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
       mouseOver = true;
     } else {
       mouseOver = false;
     }
   }
   void colorHighlight() {
-    if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-w/2 && mouseY < y+w/2) {
+    if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
       mouseOver = true;
     } else {
       mouseOver = false;

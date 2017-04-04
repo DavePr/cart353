@@ -82,6 +82,8 @@ class SurvivorSystem {
     }
   }
 
+  //DOWN RELATIONSHIP METHOD
+
 
 
   //NAME RELATED METHODS

@@ -277,6 +277,7 @@ class Survivor {
     //RIGHT SHOE
     rect(100+20, y+80, 25, 8);
   }
+  
   //COLOR CHANGE METHOD
   //If the survivor's wellbeing value goes below 100, his color palette changes to a uniform, monochromatic gray
   void adjustColor() {
@@ -286,6 +287,18 @@ class Survivor {
       pantsColor = color(125, 125, 125);
     }
   }
+  
+  
+  //SANITY TEST METHOD
+  void sanityT() {
+    
+    
+    
+    
+  }
+  
+  
+  //TRUST TEST METHOD
 
 
   //END OF CLASS
