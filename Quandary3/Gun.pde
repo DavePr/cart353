@@ -9,7 +9,7 @@ class Gun {
   //OBJECT COLORATION
   color gunColor;
   color barrelColor;
-  
+
   //GUN MODE (IF EQUIPPED OR NOT)
   boolean equipped;
 
@@ -25,12 +25,12 @@ class Gun {
   //DISPLAY METHOD
   void display() {
     if (!equipped) {
-    rectMode(CORNER);
-    fill(gunColor);
-    rect(x, y, 4*size, size);
-    rect(x-25, y, size, size*2);
-    fill(barrelColor);
-    rect(x+25, y-10, size*3, size/2);
+      rectMode(CORNER);
+      fill(gunColor);
+      rect(x, y, 4*size, size);
+      rect(x-25, y, size, size*2);
+      fill(barrelColor);
+      rect(x+25, y-10, size*3, size/2);
     }
   }
 }

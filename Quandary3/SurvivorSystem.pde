@@ -29,12 +29,13 @@ class SurvivorSystem {
   //GENERATION METHOD
   void spawn() {
     xChar = 100;
-    yChar = 375;
+    yChar = 370;
     for (int i = 0; i < groupSize; i++) {
       s.add(new Survivor(xChar, yChar));
-      b.add(new Button(xChar, yChar, 70, 150, 100, 255));
+      b.add(new Button(xChar, yChar, 70, 150, 255));
       xChar += 100;
     }
+    giveNames();
   }
 
   //GROUP DISPLAY METHOD
@@ -81,31 +82,69 @@ class SurvivorSystem {
     }
   }
 
+
+
+  //NAME RELATED METHODS
+
   //NAME LIST 
-  void  names() {
-    nameList[0] = "Bob";
-    nameList[1] = "Bob";
-    nameList[2] = "Bob";
-    nameList[3] = "Bob";
-    nameList[4] = "Bob";
-    nameList[5] = "Bob";
-    nameList[6] = "Bob";
-    nameList[7] = "Bob";
-    nameList[8] = "Bob";
-    nameList[9] = "Bob";
-    nameList[10] = "Bob";
-    nameList[11] = "Bob";
-    nameList[12] = "Bob";
-    nameList[13] = "Bob";
-    nameList[14] = "Bob";
-    nameList[15] = "Bob";
-    nameList[16] = "Bob";
-    nameList[17] = "Bob";
-    nameList[18] = "Bob";
-    nameList[19] = "Bob";
+  void  loadNames() {
+    nameList[0] = "Alex";
+    nameList[1] = "Sam";
+    nameList[2] = "Jess";
+    nameList[3] = "Danny";
+    nameList[4] = "Gabriel";
+    nameList[5] = "Marian";
+    nameList[6] = "Angel";
+    nameList[7] = "Taylor";
+    nameList[8] = "Vick";
+    nameList[9] = "Jay";
+    nameList[10] = "Devon";
+    nameList[11] = "Jazz";
+    nameList[12] = "Quinn";
+    nameList[13] = "Robin";
+    nameList[14] = "Skye";
+    nameList[15] = "Eli";
+    nameList[16] = "Christy";
+    nameList[17] = "Gael";
+    nameList[18] = "Kerr";
+    nameList[19] = "Zuri";
   }
+
+  //RANDOM NAME SELECTION
+
+  int pickName() {
+    int nameNo = int(random(0, nameList.length));
+    return nameNo;
+  }
+
+  //UNIQUE NAME VERIFICATION
+
+  void nameCheck(int i, Survivor character) {
+    int currentName = pickName();
+    if (nameFree[currentName]) {
+      character.name = nameList[currentName];
+      nameFree[currentName] = false;
+    } else {
+      nameCheck(i, character);
+    }
+  }
+
+
   //NAME ATTIRBUTION METHOD
-  void giveName() {
-    
+  void giveNames() {
+    loadNames();
+    for (int i = 0; i< groupSize; i++) {
+      Survivor character = s.get(i);
+      nameCheck(i, character);
+    }
   }
+
+  //NAME RETRIEVAL 
+
+  void getName(Survivor character, int x, int y) {
+    text(character.name, x, y);
+  }
+
+
+  //END OF CLASS
 }

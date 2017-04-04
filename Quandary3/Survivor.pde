@@ -31,7 +31,7 @@ class Survivor {
 
   //NAME
   String name; 
-  
+
   //CONSTRUCTOR
 
   Survivor(int newX, int newY) {

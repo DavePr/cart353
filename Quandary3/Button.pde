@@ -20,7 +20,7 @@ class Button {
 
   //CONSTRUCTOR
 
-  Button(int newX, int newY, int newW, int newH, color newColor, color newHighlight) {
+  Button(int newX, int newY, int newW, int newH, color newHighlight) {
 
     //BUTTON POSITIONING
     x = newX;
@@ -35,14 +35,12 @@ class Button {
     buttonClicked = false;
 
     //COLORATION
-    buttonColor = newColor;
     highlight = newHighlight;
   }
 
   //DISPLAY METHOD (IF BUTTON REPRESENTED)
 
   void display() {
-    rectMode(CENTER);
     if (mouseOver) {
       fill(highlight);
     } else {
@@ -51,9 +49,16 @@ class Button {
     rect(x, y, w, h);
   }
 
-  //BUTTON HIGHLIGHT METHOD
+  //BUTTON HIGHLIGHT METHODS
 
   void highlight() {
+    if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-w/2 && mouseY < y+w/2) {
+      mouseOver = true;
+    } else {
+      mouseOver = false;
+    }
+  }
+  void colorHighlight() {
     if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-w/2 && mouseY < y+w/2) {
       mouseOver = true;
     } else {
