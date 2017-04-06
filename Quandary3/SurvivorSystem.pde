@@ -4,6 +4,7 @@ class SurvivorSystem {
   ArrayList<Survivor> s;
   ArrayList<Button> b;
   int[][] relationship;
+  String[][] relationStatus;
   String[] nameList;
   boolean[] nameFree;
   boolean profileClick;
@@ -20,6 +21,7 @@ class SurvivorSystem {
     nameFree = new boolean[20];
     groupSize = 11;
     relationship = new int[11][11];
+    relationStatus = new String[11][11];
     profileClick = false;
     for (int i = 0; i < 20; i++) {
       nameFree[i] = true;
@@ -36,17 +38,13 @@ class SurvivorSystem {
       xChar += 100;
     }
     giveNames();
+    groupRelations();
   }
 
   //GROUP DISPLAY METHOD
   void gdisp() {
     for (Survivor character : s) {
       character.display();
-      if (keyPressed) {
-        if (key == 'd') {
-          xChar += 10;
-        }
-      }
     }
     for (int i = 0; i< groupSize; i++) {
       Button select = b.get(i);
@@ -78,12 +76,36 @@ class SurvivorSystem {
     for (int i = 0; i < s.size(); i++) {
       for (int j = i+1; j < s.size(); j++) {
         relationship[i][j] = int(random(-25, 100));
+        relationship[j][i] = relationship[i][j];
+      }
+    }
+  }
+
+
+  void updateRelations() {
+    for (int i = 0; i < s.size(); i++) {
+      for (int j = i+1; j < s.size(); j++) {
+        if (relationship[i][j] <= 0 ) {
+          relationStatus[i][j] = " Unfriendly ";
+          relationStatus[j][i] = " Unfriendly ";
+        }  if (relationship[i][j] > 0 && relationship[i][j] <= 25 ) {
+          relationStatus[i][j] = " Distant";
+          relationStatus[j][i] = " Distant ";
+        }  if (relationship[i][j] > 25 && relationship[i][j] <= 50 ) {
+          relationStatus[i][j] = " Friendly";
+          relationStatus[j][i] = " Friendly ";
+        }  if (relationship[i][j] > 50 && relationship[i][j] <= 75 ) {
+          relationStatus[i][j] = " Close";
+          relationStatus[j][i] = " Close ";
+        }  if (relationship[i][j] > 75 && relationship[i][j] <= 100 ) {
+          relationStatus[i][j] = " Intimate";
+          relationStatus[j][i] = " Intimate ";
+        }
       }
     }
   }
 
   //DOWN RELATIONSHIP METHOD
-
 
 
   //NAME RELATED METHODS

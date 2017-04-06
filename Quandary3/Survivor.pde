@@ -32,6 +32,9 @@ class Survivor {
   //NAME
   String name; 
 
+  //SPEECH
+  String says;
+
   //CONSTRUCTOR
 
   Survivor(int newX, int newY) {
@@ -58,9 +61,9 @@ class Survivor {
     pantsColor = color(randomC[3], randomC[4], randomC[5]);
 
     //CHARACTER STARTING STATISTICS
-    health = 50;
-    sanity = 50;
-    trust = 50;
+    health = int (random(25, 75));
+    sanity = int (random(25, 75));
+    trust = int (random(25, 75));
     isAlive = true;
 
     //CHARACTER'S GENDER
@@ -73,6 +76,9 @@ class Survivor {
 
     //WELLBEING
     wellbeing = health + sanity + trust;
+
+    //SPEECH
+    says = "Hello";
   }
 
 
@@ -277,29 +283,65 @@ class Survivor {
     //RIGHT SHOE
     rect(100+20, y+80, 25, 8);
   }
-  
+
   //COLOR CHANGE METHOD
   //If the survivor's wellbeing value goes below 100, his color palette changes to a uniform, monochromatic gray
+  //Will now also change his introductory message
   void adjustColor() {
     if (wellbeing < 100) {
       skinColor = color(225, 225, 225);
       shirtColor = color(150, 150, 150);
       pantsColor = color(125, 125, 125);
+      says = "Don't bother me...";
     }
   }
-  
-  
+
+
   //SANITY TEST METHOD
   void sanityT() {
-    
-    
-    
-    
+    int rng = int(random(0, 100));
+    if (rng +trust >= 100) {
+      sanity += 10;
+      says = "Thanks" ;
+    } else {
+      if (trust < 50 && sanity < 50) {
+        says = "Oh god, I'm next, aren't I?";      
+        trust -= 5;     
+        sanity -= 5;
+      } else if ( trust < 50) {
+        says = "Yeah right...";  
+        trust -= 5;
+      } else if ( sanity < 50) {
+        says = "What's the point...";
+        sanity -= 5;
+      } else {
+        says = "Okay...";
+      }
+    }
   }
-  
-  
-  //TRUST TEST METHOD
 
+  //TRUST TEST METHOD
+  void trustT() {
+    int rng = int(random(0, 100));
+    if (rng + sanity >= 100) {
+      trust += 10;
+      says = "Thanks" ;
+    } else {
+      if (trust < 50 && sanity < 50) {
+        says = "Oh god, I'm next, aren't I?";
+        trust -= 5;
+        sanity -= 5;
+      } else if ( trust < 50) {
+        says = "Yeah right...";
+        trust -= 5;
+      } else if ( sanity < 50) {
+        says = "What's the point...";
+        sanity -= 5;
+      } else {
+        says = "Okay...";
+      }
+    }
+  }
 
   //END OF CLASS
 }
