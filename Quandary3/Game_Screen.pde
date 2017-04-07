@@ -3,12 +3,13 @@ class Game_Screen {
   //CLASS PROPERTIES//
   int menuNo;
   int interactLeft;
+  int food;
+  boolean killedToday;
 
   //SYSTEM
   SurvivorSystem sys;
 
   //BUTTONS
-  ArrayList<Button> dramaChoice;
   Button start;
   Button back;
   Button prev;
@@ -17,6 +18,8 @@ class Game_Screen {
   Button sanUp;
   Button trustUp;
   Button drama;
+  Button gunMode;
+  Button noDeath;
 
 
   //BUTTON LOCK
@@ -51,9 +54,10 @@ class Game_Screen {
     center =  ( (width/2) + (height/2) ) /2 ;
     w = width;
     h = height;
+    food = 0;
+    killedToday = false;
 
     //BUTTONS
-    dramaChoice = new ArrayList<Button>();
     start = new Button(600, 600, 150, 105, 255);
     back = new Button(1100, 75, 50, 50, 255);
     prev = new Button(100, 600, 125, 50, 255);
@@ -62,6 +66,7 @@ class Game_Screen {
     sanUp = new Button(675, 175, 500, 50, 255);
     trustUp = new Button(675, 275, 500, 50, 255);
     drama = new Button(675, 375, 500, 50, 255);
+    gunMode = new Button(75, 575, 225, 125, 255);
     pistol = new Gun(100, 600);
 
     //BUTTON LOCK
@@ -76,6 +81,7 @@ class Game_Screen {
   void run() {
     sys.update();
     sys.updateRelations();
+
     if (menuNo == 0) {
       startup();
     }  
@@ -95,6 +101,7 @@ class Game_Screen {
       drama();
     }
   }
+
 
   //START SCREEN
 
@@ -133,6 +140,8 @@ class Game_Screen {
     }
   }
 
+  //GROUP OVERVIEW 
+
   void group() {
     //BACKGROUND
     background(lightGrey);
@@ -153,16 +162,39 @@ class Game_Screen {
       Survivor character = sys.s.get(i);
       sys.getName(character, character.x, 200);
     }
+
+    //NIGHT TIME
+    if (interactLeft == 0) {
+      pistol.display();
+      gunMode.highlight();
+      textSize(30);
+      fill(25);
+      if (!killedToday) {
+        text("No one dies today", 1000, 625);
+      } else {
+        text("No more deaths for today", 1000, 625);
+      }
+    }
+
     //BUTTON/TRANSITION
-    if (mousePressed && sys.profileClick == true && !lock) {
-      menuNo = 3;
-      sys.profileClick = false;
-      lock = true;
+    if (mousePressed) {
+    for (Button character : sys.b) {
+      if (!lock && character.mouseOver) {
+        menuNo = 3;
+        lock = true;
+      }
+    }
+    if (!lock && gunMode.mouseOver) {
+      
+    }
+    
     }
     if (!mousePressed) {
-     lock = false; 
+      lock = false;
     }
   }
+
+  //PROFILE PAGE
 
   void profile() {
 
@@ -179,18 +211,14 @@ class Game_Screen {
     //SURVIVOR SYSTEM, INDIVIDUAL DISPLAY METHOD
     sys.idisp();
 
-
     //INTERACTION BUTTONS
     fill(50);
     text("INTERACTIONS LEFT: " + interactLeft, 670, 75);
-
-
 
     //BACK BUTTON
     textSize(36);
     back.colorHighlight();
     text("Back", 1100, 75);
-
 
     //SANITY BOOST BUTTON
     sanUp.colorHighlight();
@@ -211,16 +239,12 @@ class Game_Screen {
     viewR.colorHighlight();
     text("View Relationships", 600, 600);
 
-
-
-
     //CHARACTER PROFILE INFORMATION
     fill(50);
     sys.getName(character, 115, 75);
     text("Health: " + character.health, 250, 140);
     text("Sanity: "  + character.sanity, 250, 240);
     text("Trust: "  + character.trust, 250, 340);
-
 
     //PROFILE CYCLING BUTTONS
     fill(200);
@@ -255,21 +279,25 @@ class Game_Screen {
           sys.survNo ++;
         }
       }
-
+      //VIEW RELATIONSHIP BUTTON
       if (viewR.mouseOver) {
         menuNo = 4;
       }
-
+      //EVERYTHING IS GONNA BE OK BUTTON
       if (sanUp.mouseOver) {
-        character.sanityT();
-        interactLeft --;
+        if (interactLeft > 0) {
+          character.sanityT();
+          interactLeft --;
+        }
       }
-
+      //YOU AND ME TILL THE END BUTTON
       if (trustUp.mouseOver) {
-        character.trustT();
-        interactLeft --;
+        if (interactLeft > 0) {
+          character.trustT();
+          interactLeft --;
+        }
       }
-
+      //BACKTALK BUTTON
       if (drama.mouseOver) {
         menuNo = 5;
       }
@@ -280,9 +308,10 @@ class Game_Screen {
     if (!mousePressed) {
       lock = false;
     }
-
     //END OF PROFILE
   }
+
+  //CHARACTER RELATIONS PAGE
 
   void relationPage() {
 
@@ -359,6 +388,8 @@ class Game_Screen {
     }
   }
 
+  //RELATION SABOTAGE 
+
   void drama() {
 
     //LOCAL VARIABLES
@@ -391,6 +422,7 @@ class Game_Screen {
     text("Back", 1125, 75);
 
     //QUESTION
+    fill(25);
     text("Really? Who?", 700, 50);
 
     //RELATIONS
@@ -398,6 +430,8 @@ class Game_Screen {
       if (i != sys.survNo) {
         fill(25);
         text(sys.relationStatus[sys.survNo][i], 850, y);
+        sys.dramaChoice.get(i).y = y;
+        sys.dramaChoice.get(i).colorHighlight();
         sys.getName(sys.s.get(i), 550, y);
         y += 50;
       }
@@ -405,11 +439,19 @@ class Game_Screen {
     //IF THE MOUSE IS BEING PRESSED
     if (mousePressed && !lock) {
 
+      for (int i = 0; i < sys.groupSize; i ++ ) {
+        if (sys.dramaChoice.get(i).mouseOver) {
+          if (interactLeft > 0) {
+            interactLeft --;
+            sys.relationT(sys.dramaChoice.get(i).charSelect);
+            menuNo = 3;
+          }
+        }
+      }
       //BACK BUTTON 
       if (back.mouseOver) {
         menuNo = 3;
       }
-
       lock = true;
     }
     //AFTER PRESS, UNLOCK BUTTONS
@@ -417,6 +459,12 @@ class Game_Screen {
       lock = false;
     }
   }
+
+  // KILL SCREEN
+
+  void gunMode() {
+  }
+
   /* Outline for Game Screens
    MAIN MENU/STARTING SCREEN    DONE
    INTRODUCTION PAGE            DONE

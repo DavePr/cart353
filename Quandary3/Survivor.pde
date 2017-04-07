@@ -24,6 +24,7 @@ class Survivor {
   int trust;
   int wellbeing;
   boolean isAlive;
+  boolean isGone;
 
   //CHARACTER'S GENDER
   int rollGend;

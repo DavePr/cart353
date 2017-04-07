@@ -17,6 +17,9 @@ class Button {
   //COLORATION
   color buttonColor;
   color highlight;
+  
+  //CHARACTER LINK
+  int charSelect;
 
   //CONSTRUCTOR
 
@@ -70,4 +73,8 @@ class Button {
       fill(buttonColor);
     }
   }
+  
+  //CHARACTER ASSOCIATION METHOD: 
+  //This method will associate the button with a Survivor object, for the purposes of SurvivorSystem relationT(); 
+
 }
