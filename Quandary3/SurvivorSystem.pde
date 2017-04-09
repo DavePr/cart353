@@ -48,7 +48,7 @@ class SurvivorSystem {
       Button select = b.get(i);
       select.highlight();
       if (select.mouseOver) {
-        survNo = i; 
+        survNo = i;
       }
     }
   }
@@ -56,6 +56,11 @@ class SurvivorSystem {
   void idisp() {
     Survivor profile = s.get(survNo);
     profile.individual();
+  }
+  //CENTER DISPLAY METHOD
+  void cdisp() {
+    Survivor profile = s.get(survNo);
+    profile.center();
   }
   //UPDATE METHOD  
   void update() {
@@ -97,6 +102,10 @@ class SurvivorSystem {
         if (relationship[i][j] > 75 && relationship[i][j] <= 100 ) {
           relationStatus[i][j] = " Intimate";
           relationStatus[j][i] = " Intimate ";
+        }
+        if (relationship[i][j] > 100 ) {
+          relationStatus[i][j] = " Dead";
+          relationStatus[j][i] = " Dead ";
         }
       }
     }
@@ -167,6 +176,44 @@ class SurvivorSystem {
   //NAME RETRIEVAL 
   void getName(Survivor character, int x, int y) {
     text(character.name, x, y);
+  }
+  //CHARACTER DEATH
+  void death() {
+    Survivor victim = s.get(survNo);
+    victim.isAlive = false;
+    victim.isGone = true;
+    victim.foodHarvested = int(victim.health*0.1) + 1;
+    for (int i = 0; i < s.size(); i++) {
+      if (i != survNo) {
+        Survivor other = s.get(i);
+        if (other.isAlive && other.isGone == false) {
+          int grief = 5 * (relationship[survNo][i] / 25);
+          s.get(i).sanity -= grief;
+          s.get(i).trust -= grief;
+          relationship[survNo][i] = 999;
+          relationship[i][survNo] = 999;
+        }
+      }
+    }
+    victim.dies();
+  }
+  //CHARACTER FLEES (LOW TRUST)
+  void ranAway() {
+     Survivor victim = s.get(survNo);
+    victim.isGone = true;
+    for (int i = 0; i < s.size(); i++) {
+      if (i != survNo) {
+        Survivor other = s.get(i);
+        if (other.isAlive && other.isGone == false) {
+          int grief = 5 * (relationship[survNo][i] / 25);
+          s.get(i).sanity -= grief;
+          s.get(i).trust -= grief;
+          relationship[survNo][i] = 999;
+          relationship[i][survNo] = 999;
+        }
+      }
+    }
+    victim.dies();  
   }
   //END OF CLASS
 }

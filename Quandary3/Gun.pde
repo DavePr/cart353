@@ -1,18 +1,14 @@
 class Gun {
   //CLASS PROPERTIES//
-
   //OBJECT POSITIONING
   int x;
   int y;
   int size;
-
   //OBJECT COLORATION
   color gunColor;
   color barrelColor;
-
   //GUN MODE (IF EQUIPPED OR NOT)
   boolean equipped;
-
   //CONSTRUCTOR
   Gun(int newX, int newY) {
     x = newX;

@@ -1,48 +1,35 @@
 class Button {
   //CLASS PROPERTIES//
-
   //BUTTON POSITIONING
   int x;
   int y;
-
   //BUTTON SIZE
   int w;
   int h;
-
   //SELECTION BOOLEANS
   boolean mouseOver;
   boolean buttonClicked;
   boolean buttonOn;
-
   //COLORATION
   color buttonColor;
   color highlight;
-  
   //CHARACTER LINK
   int charSelect;
-
   //CONSTRUCTOR
-
   Button(int newX, int newY, int newW, int newH, color newHighlight) {
-
     //BUTTON POSITIONING
     x = newX;
     y = newY;
-
     //BUTTON SIZE
     w = newW;
     h = newH;
-
     //SELECTION BOOLEANS;
     mouseOver = false;
     buttonClicked = false;
-
     //COLORATION
     highlight = newHighlight;
   }
-
   //DISPLAY METHOD (IF BUTTON REPRESENTED)
-
   void display() {
     if (mouseOver) {
       fill(highlight);
@@ -51,9 +38,7 @@ class Button {
     }
     rect(x, y, w, h);
   }
-
   //BUTTON HIGHLIGHT METHODS
-
   void highlight() {
     if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
       mouseOver = true;
@@ -73,8 +58,4 @@ class Button {
       fill(buttonColor);
     }
   }
-  
-  //CHARACTER ASSOCIATION METHOD: 
-  //This method will associate the button with a Survivor object, for the purposes of SurvivorSystem relationT(); 
-
 }
