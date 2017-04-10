@@ -1,0 +1,9 @@
+David Proulx
+April 11th, 2017
+CART  353
+Final Prototype
+
+Artist Statement:
+Quandary is a survival management game where the player is tasked as a leader for a group of 11 survivors.  The main challenge within the game's and mechanics is that of food. The group has initially no food and doesn't ever find any. However, the player is presented a decision: they can take the life of other survivors to make food for the collective.  From there, the player must decide on the best course of action. If they do choose to kill, they are tasked with deciding who. 
+One of the goals in this game is to create a simulation of a social dynamic within the context of the game.  This is why for example there is a system in place to represent the relationship each character has with each other. This becomes part of the player’s decision making, as character’s reaction to death will depend on their relationship with the newly departed.  Alongside that, one of the challenges and goals was to computationally represent this emotion and the ambience desired to support it.
+On an individual level, this project was a goal of being able to create orderly computation structures and systems, as I’ve joked around with some about my desire for my main tab to only include “Game.run()”. This was made with intention to surpass in structure my previous work, which was functional as an application and for presentation but in terms of code was very messy.
