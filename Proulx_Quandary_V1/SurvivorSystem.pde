@@ -202,7 +202,7 @@ class SurvivorSystem {
     victim.foodHarvested = int(victim.health*0.1) + 1;
     for (int i = 0; i < s.size(); i++) {
       Survivor character = s.get(i);
-      if (character.role == "Butcher") {
+      if (character.role == "Butcher" && character.isAlive && character.isGone == false) {
         victim.foodHarvested++;
       }
     }

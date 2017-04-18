@@ -69,7 +69,7 @@ class Game_Screen {
   //CONSTRUCTOR
   Game_Screen() {
     //MUSIC
-    background.amp(0.1);
+    background.amp(0.5);
     background.loop();
     click.amp(0.1);
     //PROPERTIES
@@ -805,6 +805,8 @@ class Game_Screen {
     score = 0;
     food = 0;
     feedingTime = false;
+    background.stop();
+    background.loop();
   }
 
   //END OF CLASS
